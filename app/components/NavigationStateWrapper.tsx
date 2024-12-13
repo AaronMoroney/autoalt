@@ -1,6 +1,6 @@
 "use client";
 
-import { AsideNav } from "./AsideNav";
+import { AsideNav } from "./dashboard/AsideNav";
 import {
 	NavigationProvider,
 	useNavigation,
@@ -8,7 +8,6 @@ import {
 
 function NavigationContent({ children }: { children: React.ReactNode }) {
 	const { isNavOpen } = useNavigation();
-
 	return (
 		<div className="flex h-screen mt-16 fixed w-screen">
 			<AsideNav isOpen={isNavOpen} />

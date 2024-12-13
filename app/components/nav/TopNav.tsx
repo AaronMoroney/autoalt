@@ -1,15 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { Sparkles, Moon, Sun } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { ThemeToggle } from "@/app/components/ThemeToggle";
 
 export function TopNav() {
-	const [theme, setTheme] = useState("light");
-
-	const handleToggle = () => {
-		setTheme(theme === "light" ? "dark" : "light");
-	};
+	const router = useRouter();
 
 	return (
 		<header className="bg-white shadow-md fixed w-screen flex justify-between px-6 z-50">
@@ -18,13 +15,15 @@ export function TopNav() {
 				<Sparkles className="ml-1" />
 			</div>
 			<div className="flex flex-row items-center">
-				<Button className="mr-2" variant="ghost" onClick={handleToggle}>
-					{theme === "light" ? <Moon /> : <Sun />}
-				</Button>
-				<Button variant="outline" className="mr-2">
+				<ThemeToggle />
+				<Button
+					variant="outline"
+					className="mr-2"
+					onClick={() => router.push("/login")}
+				>
 					login
 				</Button>
-				<Button>signup</Button>
+				<Button onClick={() => router.push("/signup")}>signup</Button>
 			</div>
 		</header>
 	);
